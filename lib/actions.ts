@@ -1,4 +1,4 @@
-import { getUserQuery } from "@/graphql";
+import { createUserMutation, getUserQuery } from "@/graphql";
 import { Query } from "@grafbase/sdk/dist/src/query";
 import { GraphQLClient } from "graphql-request";
 
@@ -34,4 +34,5 @@ export const createUser = (name: string, email: string, avatarUrl: string) => {
   const variables = {
     input: { name, email, avatarUrl },
   };
+  return makeGraphQLRequest(createUserMutation, { variables });
 };
